@@ -16,11 +16,15 @@ const BlogCard = (props: BlogCardProps) => {
         <div>{props.publishedDate}</div>
       </div>
       <div className="text-4xl font-bold">{props.title}</div>
-      <div className="text-xl">
-        {props.content.length > 100
-          ? `${props.content.slice(0, 100)}...`
-          : `${props.content}`}
-      </div>
+      <div
+        className="text-xl"
+        dangerouslySetInnerHTML={{
+          __html:
+            props.content.length > 100
+              ? `${props.content.slice(0, 100)}...`
+              : props.content,
+        }}
+      />
       <div className="font-extralight">{`${Math.ceil(props.content.length / 100) / 2} minutes read`}</div>
     </div>
   );
